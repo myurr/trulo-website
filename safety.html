@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trust & Safety | Trulo</title>
+  <meta name="description"
+    content="Discover how Trulo keeps you safe with mandatory ID verification and our unique personal Audit Trail feature.">
+  <meta name="theme-color" content="#222222">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .safety-highlight {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(129, 186, 203, 0.3);
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    .safety-highlight-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(129, 186, 203, 0.15);
+      color: var(--turquoise);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      .safety-highlight {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-blobs">
+    <div class="blob blob-1" style="background: var(--blue-light);"></div>
+    <div class="blob blob-3" style="background: var(--turquoise);"></div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo_large.png" alt="Trulo">
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="safety.html" class="active">Trust & Safety</a>
+      <a href="contact.html">Support</a>
+      <a href="#" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">Trust & Safety</h1>
+      <p class="page-subtitle">Your security is our absolute priority, built directly into the fabric of the app.</p>
+    </header>
+
+    <div class="prose">
+      <p>
+        At Trulo, we believe dating should be exciting, natural, and above all, deeply safe. The online dating space has
+        historically failed to adequately protect its users from fraud, harassment, and physical danger. We are taking a
+        radically different approach.
+      </p>
+
+      <div class="safety-highlight">
+        <div class="safety-highlight-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h3 style="margin-top: 0;">Mandatory ID Verification</h3>
+          <p style="margin-bottom: 0;">
+            Every single person on Trulo has to pass a secure, third-party ID check. We verify that they are a real
+            person and that the age on their profile strictly matches their government ID. If they don't pass, they
+            don't get an account. Simple as that.
+          </p>
+        </div>
+      </div>
+
+      <div class="safety-highlight">
+        <div class="safety-highlight-icon" style="background: rgba(246, 167, 178, 0.15); color: var(--red-light);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h3 style="margin-top: 0; color: var(--white);">Personal Audit Trail</h3>
+          <p style="margin-bottom: 0;">
+            Meeting a stranger from the internet carries inherent risk. To mitigate this, Trulo includes a secure Audit
+            Trail feature. Before your date, tell the app where you're going and who you are meeting. This creates a
+            secure offline ledger that gives you an added layer of peace of mind.
+          </p>
+        </div>
+      </div>
+
+      <h2>Zero Tolerance Policy</h2>
+      <p>
+        Trulo does not tolerate abuse, harassment, fraud, or inappropriate behavior. Because our platform requires ID
+        verification, getting banned from Trulo means being banned permanently. It is much harder for bad actors to
+        simply spin up a new account.
+      </p>
+
+      <h2>Data Privacy</h2>
+      <p>
+        We use your ID solely to verify your authenticity. This sensitive physical identity data is processed securely
+        by our verification partners and is strictly protected. We will never sell your personal data or your dating
+        history. For full details on how we handle your personal information, please read our <a
+          href="privacy.html">Privacy Policy</a>.
+      </p>
+
+      <h2>Report and Block</h2>
+      <p>
+        If someone makes you feel uncomfortable, behaves inappropriately, or violates our terms of service, you can
+        easily block and report them directly from their profile or your chat window. Our Trust & Safety team reviews
+        all reports swiftly to ensure the community remains safe.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Trulo</h4>
+        <p style="color: var(--mid-grey); font-size: 0.95rem; line-height: 1.5; padding-right: 2rem;">
+          A fresh way to connect with the people around you. Safety first, real life second.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="safety.html">Trust & Safety</a></li>
+          <li><a href="contact.html">Contact / Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <a href="index.html"><img src="assets/logo_large.png" alt="Trulo Logo"></a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Trulo. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

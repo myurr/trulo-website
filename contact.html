@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & App Support | Trulo</title>
+  <meta name="description" content="Contact Trulo. Get app support, media inquiries, or make a business request.">
+  <meta name="theme-color" content="#222222">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--light-grey);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--turquoise);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info p {
+      color: var(--mid-grey);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-blobs">
+    <div class="blob blob-2" style="background: var(--red-bright);"></div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo_large.png" alt="Trulo">
+    </a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="safety.html">Trust & Safety</a>
+      <a href="contact.html" class="active">Support</a>
+      <a href="#" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="page-container" style="max-width: 1000px;">
+    <header class="page-header">
+      <h1 class="page-title">Contact Support</h1>
+      <p class="page-subtitle">We're here to help. Reach out with questions, concerns, or feedback.</p>
+    </header>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>App Support</h3>
+        <p>Having trouble with the Trulo app or TestFlight beta? Get in touch and our technical team will assist you as
+          soon as possible.<br><a href="mailto:support@trulo.app"
+            style="color: var(--turquoise); text-decoration: none;">support@trulo.app</a></p>
+
+        <h3>Trust & Safety</h3>
+        <p>If you need to report an incident, suspect fraudulent behavior, or have concerns regarding another user,
+          please contact our dedicated safety team immediately. Please provide the profile details if applicable.<br><a
+            href="mailto:safety@trulo.app" style="color: var(--turquoise); text-decoration: none;">safety@trulo.app</a>
+        </p>
+
+        <h3>Press & Business</h3>
+        <p>For press inquiries, partnerships, and business developer requests (including Apple App Store
+          operations).<br><a href="mailto:hello@trulo.app"
+            style="color: var(--turquoise); text-decoration: none;">hello@trulo.app</a></p>
+
+        <h3>Company Address</h3>
+        <p>
+          Trulo Ltd.<br>
+          London, United Kingdom
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <form action="#" method="POST"
+          onsubmit="event.preventDefault(); alert('Form submission simulated. Backend not connected.');">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <select class="form-input" id="subject" name="subject" required>
+              <option value="support">App / Technical Support</option>
+              <option value="safety">Report a Safety Concern</option>
+              <option value="data">Data / Privacy Request</option>
+              <option value="business">Business Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Trulo</h4>
+        <p style="color: var(--mid-grey); font-size: 0.95rem; line-height: 1.5; padding-right: 2rem;">
+          A fresh way to connect with the people around you. Safety first, real life second.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="safety.html">Trust & Safety</a></li>
+          <li><a href="contact.html">Contact / Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <a href="index.html"><img src="assets/logo_large.png" alt="Trulo Logo"></a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Trulo. All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
