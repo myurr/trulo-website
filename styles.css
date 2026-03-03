@@ -137,7 +137,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 2rem 5%;
   position: relative;
 }
@@ -151,13 +150,21 @@ main {
   pointer-events: none;
   z-index: 0;
 }
-.hero-content {
+.hero-split {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1100px;
+}
+.hero-content {
+  flex: 1;
+  text-align: left;
 }
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
@@ -168,7 +175,7 @@ main {
   -webkit-text-fill-color: transparent;
 }
 .hero-subtitle {
-  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
   font-weight: 300;
   color: var(--light-grey);
   line-height: 1.6;
@@ -181,6 +188,17 @@ main {
   gap: 1rem;
   opacity: 0;
   animation: fadeUp 1s ease-out 0.6s forwards;
+}
+.hero-phone {
+  flex-shrink: 0;
+  opacity: 0;
+  animation: fadeUp 1s ease-out 0.5s forwards;
+}
+.hero-phone img {
+  width: 320px;
+  height: auto;
+  border-radius: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(129, 186, 203, 0.08);
 }
 .btn {
   display: inline-block;
@@ -395,9 +413,28 @@ main {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@media (max-width: 960px) {
+  .hero-split {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  .hero-phone img {
+    width: 280px;
+  }
+}
 @media (max-width: 768px) {
   .nav-links {
     display: none; /* simple mobile nav approach for MVP */
+  }
+  .hero-phone img {
+    width: 260px;
   }
   .footer-bottom {
     flex-direction: column;
