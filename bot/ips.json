@@ -1,0 +1,13 @@
+{
+  "bot": "TruloVenueBot",
+  "operator": "Trulo Ltd. (Registered Company No. 15975061)",
+  "documentation": "https://trulo.dating/bot",
+  "contact": "bot@trulo.dating",
+  "last_updated": "2026-04-29",
+  "version": 1,
+  "ipv4": [
+    "145.40.190.206"
+  ],
+  "ipv6": [],
+  "notes": "All TruloVenueBot crawler traffic egresses from the IPv4 addresses listed above. IPv6 outbound is disabled at the crawler level — any IPv6 traffic claiming this user-agent is not us. Updates to this list are announced through Cloudflare / Akamai / DataDome / Fastly verified-bot channels."
+}

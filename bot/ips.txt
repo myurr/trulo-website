@@ -1,0 +1,7 @@
+# TruloVenueBot — egress IP list
+# Documentation: https://trulo.dating/bot
+# Contact: bot@trulo.dating
+# Last updated: 2026-04-29
+# Format: one CIDR per line, IPv4 only.
+
+145.40.190.206/32

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruloVenueBot — Key Directory | Trulo</title>
+  <meta name="description" content="Public key directory for TruloVenueBot — Ed25519 keys used for HTTP Message Signature verification.">
+  <meta name="theme-color" content="#222222">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2" style="background: var(--orange-light);"></div>
+  </div>
+
+  <nav class="nav">
+    <a href="../../index.html" class="nav-logo">
+      <img src="../../assets/logo_large.png" alt="Trulo">
+    </a>
+    <div class="nav-links">
+      <a href="../../about.html">About</a>
+      <a href="../../safety.html">Trust &amp; Safety</a>
+      <a href="../../contact.html">Support</a>
+      <a href="#" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">TruloVenueBot — Key Directory</h1>
+      <p class="page-subtitle">Public Ed25519 keys for verifying HTTP Message Signatures on TruloVenueBot requests.</p>
+    </header>
+
+    <div class="prose">
+      <div class="prose-panel">
+        <h2>Machine-readable directory</h2>
+        <p>Verifiers should fetch the JSON directory and resolve keys by their <code>kid</code>:</p>
+        <ul>
+          <li><a href="directory.json"><code>https://trulo.dating/bot/keys/directory.json</code></a></li>
+        </ul>
+        <p>
+          The directory follows JWK-set conventions
+          (<a href="https://datatracker.ietf.org/doc/html/rfc7517">RFC 7517</a>) and lists every currently-valid
+          public key. Verifiers should match a request's <code>Signature-Input</code> header <code>keyid</code>
+          parameter against the <code>kid</code> field of an entry in the <code>keys</code> array.
+        </p>
+      </div>
+
+      <h2>Signature scheme</h2>
+      <ul>
+        <li><strong>Algorithm:</strong> Ed25519 (<code>"alg": "ed25519"</code>)</li>
+        <li><strong>Wire format:</strong> HTTP Message Signatures
+          (<a href="https://datatracker.ietf.org/doc/html/rfc9421">RFC 9421</a>)</li>
+        <li><strong>Components signed:</strong> <code>@method</code>, <code>@target-uri</code>,
+          <code>@authority</code>, plus the standard signature parameters (<code>created</code>,
+          <code>keyid</code>, <code>alg</code>)</li>
+        <li><strong>Body:</strong> not signed — TruloVenueBot crawl traffic uses GET only</li>
+        <li><strong>Header name:</strong> <code>Signature</code> (with the matching
+          <code>Signature-Input</code> describing the covered components)</li>
+      </ul>
+
+      <h2>Key rotation</h2>
+      <p>
+        Keys rotate every 90 days. We publish the new key one rotation period before retiring the old one, so
+        there is always at least one valid key in the directory and a grace window during which both keys
+        verify. <code>kid</code> values are opaque short strings; verifiers should not attempt to parse them.
+      </p>
+
+      <h2>Current status</h2>
+      <p>
+        Initial key publication is pending. The directory currently returns an empty <code>keys</code> array; in
+        this state TruloVenueBot requests are unsigned and verification is by user-agent plus egress IP only.
+        Once signing is enabled, this section will be updated and the JSON directory will list the active key.
+      </p>
+
+      <p style="margin-top: 2rem;">
+        <a href="../index.html" class="btn btn-primary" style="text-decoration: none;">← Back to TruloVenueBot</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Trulo</h4>
+        <p style="color: var(--mid-grey); font-size: 0.95rem; line-height: 1.5; padding-right: 2rem;">
+          A fresh way to connect with the people around you. Safety first, real life second.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../about.html">About Us</a></li>
+          <li><a href="../../safety.html">Trust &amp; Safety</a></li>
+          <li><a href="../../contact.html">Contact / Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../../privacy.html">Privacy Policy</a></li>
+          <li><a href="../../terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <a href="../../index.html"><img src="../../assets/logo_large.png" alt="Trulo Logo"></a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Trulo Ltd. (Registered Company No. 15975061). All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

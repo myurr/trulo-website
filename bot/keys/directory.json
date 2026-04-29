@@ -1,0 +1,10 @@
+{
+  "bot": "TruloVenueBot",
+  "documentation": "https://trulo.dating/bot",
+  "contact": "bot@trulo.dating",
+  "format": "https://datatracker.ietf.org/doc/html/rfc7517",
+  "last_updated": "2026-04-29",
+  "status": "pending_initial_publication",
+  "notes": "Initial Ed25519 keypair pending. Until the first key is published, TruloVenueBot requests are unsigned and verification is by user-agent + egress IP only. Once keys land, the `keys` array below will list every currently-valid public key. Active keys are referenced from `Signature-Input` request headers via their `kid`.",
+  "keys": []
+}

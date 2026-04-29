@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruloVenueBot | Trulo</title>
+  <meta name="description"
+    content="Public documentation for TruloVenueBot — Trulo's venue-discovery crawler. Bot identity, contact channels, robots.txt policy, opt-out process.">
+  <meta name="theme-color" content="#222222">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2" style="background: var(--orange-light);"></div>
+  </div>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo_large.png" alt="Trulo">
+    </a>
+    <div class="nav-links">
+      <a href="../about.html">About</a>
+      <a href="../safety.html">Trust &amp; Safety</a>
+      <a href="../contact.html">Support</a>
+      <a href="#" class="nav-cta">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <header class="page-header">
+      <h1 class="page-title">TruloVenueBot</h1>
+      <p class="page-subtitle">Trulo's venue-discovery crawler — public identity, policies, and contact channels.</p>
+    </header>
+
+    <div class="prose">
+
+      <div class="prose-panel">
+        <h2>What is TruloVenueBot?</h2>
+        <p>
+          TruloVenueBot is the crawler Trulo operates to discover publicly available information about UK venues —
+          pubs, restaurants, cafés, cultural sites, parks, sport centres, and similar. The data powers venue
+          discovery and date-planning features inside the Trulo app, and we link users back to the original venue
+          sites rather than reproducing their content as our own.
+        </p>
+        <p>
+          The crawler is a clearly identified, policy-compliant aggregator. We do not bypass bot protections,
+          authentication, paywalls, or CAPTCHAs. We respect <code>robots.txt</code>. We honour publisher opt-outs.
+          If you operate a site we crawl and you'd prefer we didn't, jump to <a href="#opt-out">opt-out</a>.
+        </p>
+      </div>
+
+      <h2 id="identity">Bot identity</h2>
+      <ul>
+        <li><strong>Bot name:</strong> <code>TruloVenueBot</code></li>
+        <li><strong>Operator:</strong> Trulo Ltd. (Registered Company No. 15975061), United Kingdom</li>
+        <li><strong>Category:</strong> Aggregator — venue discovery for date planning</li>
+        <li><strong>Coverage:</strong> United Kingdom (England, Scotland, Wales, Northern Ireland)</li>
+      </ul>
+
+      <h2 id="user-agent">User-Agent string</h2>
+      <p>Every request from TruloVenueBot announces itself with this exact User-Agent:</p>
+      <pre style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 6px; overflow-x: auto;"><code>TruloVenueBot/1.0 (+https://trulo.dating/bot)</code></pre>
+      <p>
+        We never use a browser-style User-Agent on crawler traffic, and we never share this UA with the Trulo
+        mobile app or any unrelated tooling. If you see this UA in your logs and the IP is not in our published
+        list (below), it is not us.
+      </p>
+
+      <h2 id="ip-list">IP address list</h2>
+      <p>
+        Every TruloVenueBot request egresses from one of the IP addresses published below. Site operators who
+        prefer IP-based allow / deny rules can pin against this list.
+      </p>
+      <ul>
+        <li>JSON: <a href="ips.json"><code>https://trulo.dating/bot/ips.json</code></a></li>
+        <li>Plain text: <a href="ips.txt"><code>https://trulo.dating/bot/ips.txt</code></a></li>
+      </ul>
+      <p>
+        The list is updated whenever our crawler infrastructure changes. We notify the major bot-management
+        providers (Cloudflare, Akamai, DataDome, Fastly) of changes through their respective verified-bot
+        channels.
+      </p>
+
+      <h2 id="signed-requests">Signed requests (Web Bot Auth)</h2>
+      <p>
+        TruloVenueBot is being onboarded onto
+        <a href="https://datatracker.ietf.org/doc/html/rfc9421">HTTP Message Signatures (RFC 9421)</a> with
+        Ed25519 — Cloudflare's preferred verification path for the Verified Bots program. The current
+        publication state is tracked in the public key directory:
+      </p>
+      <ul>
+        <li><a href="keys/"><code>https://trulo.dating/bot/keys/</code></a> — human-readable</li>
+        <li><a href="keys/directory.json"><code>https://trulo.dating/bot/keys/directory.json</code></a> —
+          machine-readable JWK set</li>
+      </ul>
+      <p>
+        Until the first key is published, requests are unsigned and verification is by user-agent plus egress IP
+        from the list above. Once keys are live, the directory's <code>keys</code> array will list the active
+        key; rotated keys are kept in the directory for a grace window before retirement.
+      </p>
+
+      <h2 id="robots">robots.txt policy</h2>
+      <ul>
+        <li>We fetch and respect each site's <code>robots.txt</code> before scheduling any crawl on that host.</li>
+        <li>We honour <code>User-agent: *</code> and <code>User-agent: TruloVenueBot</code> directives. Either form
+          works. Specific rules for our agent take precedence over wildcard rules per the standard.</li>
+        <li>We honour <code>Disallow</code>, <code>Allow</code>, and <code>Crawl-delay</code>.</li>
+        <li>If <code>robots.txt</code> is unreachable (5xx, timeout, etc.) we treat the site as off-limits until
+          the file is available again — fail-closed.</li>
+      </ul>
+
+      <h2 id="scope">Scope &amp; exclusions</h2>
+      <p>TruloVenueBot only fetches public venue pages and a small set of supporting pages:</p>
+      <ul>
+        <li>Venue homepages and content pages (menus, opening hours, "about", contact)</li>
+        <li>Linked PDF menus and similar public assets</li>
+        <li>Schema.org / JSON-LD data embedded in venue pages</li>
+        <li>Images that the venue's own pages link to, for use as the venue's photo on Trulo</li>
+      </ul>
+      <p>We <strong>never</strong> fetch:</p>
+      <ul>
+        <li>Authenticated, account, login, or session-bound pages</li>
+        <li>Checkout, payment, basket, or reservation-flow pages</li>
+        <li>Admin dashboards or staff-only pages</li>
+        <li>Direct competitor pricing endpoints, scraping for resale, or bulk content extraction</li>
+        <li>Anything behind a CAPTCHA or bot challenge — if we hit one, we back off and stop</li>
+      </ul>
+
+      <h2 id="rate-limits">Rate-limiting philosophy</h2>
+      <ul>
+        <li>Per-host concurrency is capped — at most a handful of simultaneous fetches against any single
+          domain.</li>
+        <li>Per-host request rate is capped well below typical organic traffic.</li>
+        <li>We back off automatically on <code>429</code>, <code>403</code>, challenge pages, or repeated 5xx.</li>
+        <li>We do not retry aggressively. Domains that consistently return errors are placed on a backoff ladder
+          and re-tried at decreasing frequency until they recover.</li>
+      </ul>
+
+      <h2 id="opt-out">Publisher opt-out &amp; takedown</h2>
+      <p>If you'd like TruloVenueBot to stop crawling your site, you have three options:</p>
+      <ol>
+        <li><strong>robots.txt</strong> — add a <code>Disallow</code> rule for <code>TruloVenueBot</code> (or for
+          <code>*</code>). We honour it on the next crawl cycle for that host, typically within 24 hours.</li>
+        <li><strong>Email</strong> — write to
+          <a href="mailto:bot@trulo.dating"><code>bot@trulo.dating</code></a> with the domain you'd like removed.
+          We action these within two working days and confirm by reply.</li>
+        <li><strong>Removal of already-collected data</strong> — the same email address handles takedown requests
+          for any data we've already stored about your venue.</li>
+      </ol>
+
+      <h2 id="abuse">Abuse reporting</h2>
+      <p>
+        If TruloVenueBot is misbehaving — excessive load, ignored rules, content scraped beyond scope, or anything
+        else that looks wrong — please report it to
+        <a href="mailto:bot@trulo.dating"><code>bot@trulo.dating</code></a>. Include any log lines you have. We
+        respond within one working day for active issues.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <ul>
+        <li><strong>Bot operations &amp; opt-out:</strong>
+          <a href="mailto:bot@trulo.dating"><code>bot@trulo.dating</code></a></li>
+        <li><strong>General support:</strong>
+          <a href="mailto:support@trulo.dating"><code>support@trulo.dating</code></a></li>
+        <li><strong>Privacy:</strong>
+          <a href="mailto:privacy@trulo.dating"><code>privacy@trulo.dating</code></a></li>
+      </ul>
+
+      <h2 id="updates">Changes to this page</h2>
+      <p>
+        We update this page whenever the crawler's identity, IP space, or scope changes. The version below is the
+        current baseline.
+      </p>
+      <p style="color: var(--mid-grey); font-size: 0.9rem;">
+        <strong>Last updated:</strong> 2026-04-29 — initial publication.
+      </p>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Trulo</h4>
+        <p style="color: var(--mid-grey); font-size: 0.95rem; line-height: 1.5; padding-right: 2rem;">
+          A fresh way to connect with the people around you. Safety first, real life second.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../safety.html">Trust &amp; Safety</a></li>
+          <li><a href="../contact.html">Contact / Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
+          <li><a href="../terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <a href="../index.html"><img src="../assets/logo_large.png" alt="Trulo Logo"></a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Trulo Ltd. (Registered Company No. 15975061). All rights reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
