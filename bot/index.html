@@ -107,12 +107,18 @@
 
       <h2 id="robots">robots.txt policy</h2>
       <ul>
-        <li>We fetch and respect each site's <code>robots.txt</code> before scheduling any crawl on that host.</li>
+        <li>We fetch each site's <code>robots.txt</code> before scheduling any crawl on that host, and re-check it
+          weekly.</li>
         <li>We honour <code>User-agent: *</code> and <code>User-agent: TruloVenueBot</code> directives. Either form
-          works. Specific rules for our agent take precedence over wildcard rules per the standard.</li>
-        <li>We honour <code>Disallow</code>, <code>Allow</code>, and <code>Crawl-delay</code>.</li>
-        <li>If <code>robots.txt</code> is unreachable (5xx, timeout, etc.) we treat the site as off-limits until
-          the file is available again — fail-closed.</li>
+          works. Specific rules for our agent take precedence over wildcard rules per
+          <a href="https://datatracker.ietf.org/doc/html/rfc9309">RFC 9309</a>.</li>
+        <li>We honour <code>Disallow</code> and <code>Allow</code>.</li>
+        <li>We do not currently parse <code>Crawl-delay</code>; instead we apply a uniform 1-second minimum
+          interval between requests to the same domain, which sits below the typical published Crawl-delay value.
+          Native Crawl-delay support is on the roadmap.</li>
+        <li>If <code>robots.txt</code> returns 404 we treat the site as having no rules. If it returns 5xx or the
+          fetch errors out, we currently fall back to allow on a fresh check, but we re-fetch on the next cycle.
+          Tightening this to fail-closed on 5xx is on the roadmap.</li>
       </ul>
 
       <h2 id="scope">Scope &amp; exclusions</h2>
@@ -134,12 +140,15 @@
 
       <h2 id="rate-limits">Rate-limiting philosophy</h2>
       <ul>
-        <li>Per-host concurrency is capped — at most a handful of simultaneous fetches against any single
-          domain.</li>
-        <li>Per-host request rate is capped well below typical organic traffic.</li>
-        <li>We back off automatically on <code>429</code>, <code>403</code>, challenge pages, or repeated 5xx.</li>
-        <li>We do not retry aggressively. Domains that consistently return errors are placed on a backoff ladder
-          and re-tried at decreasing frequency until they recover.</li>
+        <li>Per-host serialisation: a 1-second minimum between requests to the same domain, enforced regardless
+          of crawl concurrency.</li>
+        <li>Per-host request rate is capped well below typical organic traffic. We do not bulk-extract.</li>
+        <li>Domains that error or time out are placed on an exponential backoff ladder
+          (1 day → 2 days → 14 days → 28 days → permanently retired) and re-tried at decreasing frequency
+          until they recover.</li>
+        <li>Cloudflare / Akamai / DataDome challenge pages are tagged as such on receipt; we do not retry
+          challenge-tagged pages until our verified-bot status with the relevant provider is established.</li>
+        <li>We do not retry aggressively. We cap retries on transient errors and never bulk-replay.</li>
       </ul>
 
       <h2 id="opt-out">Publisher opt-out &amp; takedown</h2>
