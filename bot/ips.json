@@ -8,6 +8,8 @@
   "ipv4": [
     "145.40.190.206"
   ],
-  "ipv6": [],
-  "notes": "All TruloVenueBot crawler traffic egresses from the IPv4 addresses listed above. IPv6 outbound is disabled at the crawler level — any IPv6 traffic claiming this user-agent is not us. Updates to this list are announced through Cloudflare / Akamai / DataDome / Fastly verified-bot channels."
+  "ipv6": [
+    "2a0e:cb01:ae:6400:4a21:bff:fe6f:ae66"
+  ],
+  "notes": "All TruloVenueBot crawler traffic egresses from the addresses listed above. The IPv6 entry is a single /128 host address (not the wider /64 prefix) so unrelated devices on the same connection can never be confused with the bot. Updates to this list are announced through Cloudflare / Akamai / DataDome / Fastly verified-bot channels."
 }

@@ -2,6 +2,7 @@
 # Documentation: https://trulo.dating/bot
 # Contact: bot@trulo.dating
 # Last updated: 2026-04-29
-# Format: one CIDR per line, IPv4 only.
+# Format: one CIDR per line.
 
 145.40.190.206/32
+2a0e:cb01:ae:6400:4a21:bff:fe6f:ae66/128
