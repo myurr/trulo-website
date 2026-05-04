@@ -67,16 +67,20 @@
 
       <h2>Key rotation</h2>
       <p>
-        Keys rotate every 90 days. We publish the new key one rotation period before retiring the old one, so
-        there is always at least one valid key in the directory and a grace window during which both keys
-        verify. <code>kid</code> values are opaque short strings; verifiers should not attempt to parse them.
+        No fixed rotation schedule. Keys rotate on suspected compromise or operational change. When rotation
+        does occur, we publish the new key alongside the existing one for a grace window so verifiers always
+        have at least one valid key, then retire the old key once the grace window closes.
+        <code>kid</code> values are opaque short strings; verifiers should not attempt to parse them.
       </p>
 
       <h2>Current status</h2>
       <p>
-        Initial key publication is pending. The directory currently returns an empty <code>keys</code> array; in
-        this state TruloVenueBot requests are unsigned and verification is by user-agent plus egress IP only.
-        Once signing is enabled, this section will be updated and the JSON directory will list the active key.
+        The active signing key was published on 2026-05-04 and is listed in
+        <a href="directory.json"><code>directory.json</code></a>. Every TruloVenueBot request now carries
+        RFC 9421 HTTP Message Signature headers (<code>Signature-Agent</code>, <code>Signature-Input</code>,
+        <code>Signature</code>) referencing this key by <code>kid</code>. Verifiers can fetch this directory,
+        match the request's <code>keyid</code> parameter against the <code>kid</code> field of an entry in
+        the <code>keys</code> array, and verify the signature against the listed JWK.
       </p>
 
       <p style="margin-top: 2rem;">
