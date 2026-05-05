@@ -89,10 +89,9 @@
 
       <h2 id="signed-requests">Signed requests (Web Bot Auth)</h2>
       <p>
-        TruloVenueBot is being onboarded onto
-        <a href="https://datatracker.ietf.org/doc/html/rfc9421">HTTP Message Signatures (RFC 9421)</a> with
-        Ed25519 — Cloudflare's preferred verification path for the Verified Bots program. The current
-        publication state is tracked in the public key directory:
+        TruloVenueBot signs every outbound request with
+        <a href="https://datatracker.ietf.org/doc/html/rfc9421">HTTP Message Signatures (RFC 9421)</a> using
+        Ed25519. The active public key is published in the bot's key directory:
       </p>
       <ul>
         <li><a href="keys/"><code>https://trulo.dating/bot/keys/</code></a> — human-readable</li>
@@ -100,9 +99,11 @@
           machine-readable JWK set</li>
       </ul>
       <p>
-        Until the first key is published, requests are unsigned and verification is by user-agent plus egress IP
-        from the list above. Once keys are live, the directory's <code>keys</code> array will list the active
-        key; rotated keys are kept in the directory for a grace window before retirement.
+        Every request carries <code>Signature-Agent</code>, <code>Signature-Input</code>, and
+        <code>Signature</code> headers. The <code>keyid</code> parameter in <code>Signature-Input</code>
+        matches the <code>kid</code> field of an entry in the directory's <code>keys</code> array;
+        verifiers can fetch the directory and verify the signature against the listed JWK. Rotated keys
+        are kept in the directory for a grace window before retirement.
       </p>
 
       <h2 id="robots">robots.txt policy</h2>
@@ -187,7 +188,7 @@
         current baseline.
       </p>
       <p style="color: var(--mid-grey); font-size: 0.9rem;">
-        <strong>Last updated:</strong> 2026-04-29 — initial publication.
+        <strong>Last updated:</strong> 2026-05-05 — RFC 9421 / Web Bot Auth signing live.
       </p>
 
     </div>
