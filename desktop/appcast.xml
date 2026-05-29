@@ -11,7 +11,7 @@
       <pubDate>Fri, 29 May 2026 12:45:03 +0000</pubDate>
       <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
       <enclosure
-        url="https://github.com/myurr/trulo_app/releases/download/designer-macos-v1.0.0-1/TruloDesigner-sparkle.zip"
+        url="https://github.com/myurr/trulo-website/releases/download/designer-macos-v1.0.0-1/TruloDesigner-sparkle.zip"
         sparkle:version="1"
         sparkle:shortVersionString="1.0.0"
         length="58997837"
