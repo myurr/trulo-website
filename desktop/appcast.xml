@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Trulo Designer (macOS)</title>
+    <link>https://trulo.dating/desktop/appcast.xml</link>
+    <description>Auto-update feed for the Trulo Designer macOS build (Sparkle).</description>
+    <language>en</language>
+    <item>
+      <title>Version 1.0.0 (1)</title>
+      <description><![CDATA[First Sparkle-enabled designer build (staging backend). Baseline release.]]></description>
+      <pubDate>Fri, 29 May 2026 12:45:03 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/myurr/trulo_app/releases/download/designer-macos-v1.0.0-1/TruloDesigner-sparkle.zip"
+        sparkle:version="1"
+        sparkle:shortVersionString="1.0.0"
+        length="58997837"
+        type="application/octet-stream"
+        sparkle:edSignature="4u3aG28XtnbqgqNHVS2jQReZDzR06D4esGfQnLHYlmRSHjjOs4T1ZLltqEqgnh+II85QLyG5qwEgCx49rMWPAg==" />
+    </item>
+  </channel>
+</rss>
