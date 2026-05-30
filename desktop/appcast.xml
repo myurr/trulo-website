@@ -6,6 +6,19 @@
     <description>Auto-update feed for the Trulo Designer macOS build (Sparkle).</description>
     <language>en</language>
     <item>
+      <title>Version 1.2.0 (3)</title>
+      <description><![CDATA[Adds the real Trulo app icon to the macOS build, and a manual "Check for updates" control — both an in-app button in the designer banner and a native "Check for Updates…" item in the app menu. Staging backend.]]></description>
+      <pubDate>Sat, 30 May 2026 10:50:07 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/myurr/trulo-website/releases/download/designer-macos-v1.2.0-3/TruloDesigner-sparkle.zip"
+        sparkle:version="3"
+        sparkle:shortVersionString="1.2.0"
+        length="61834952"
+        type="application/octet-stream"
+        sparkle:edSignature="uSbp9l9iR1shfEk3ScjNJ6Qh843Ebye3yPpwPrJwGXuXf3KBIoxPL1L9SwU1uDM9Tjr6Z6UJWM1ivR5KmV/UDQ==" />
+    </item>
+    <item>
       <title>Version 1.1.0 (2)</title>
       <description><![CDATA[Community tab update: aggregated home feed across your joined spaces, plus inline join/leave spaces from the Community tab. Staging backend.]]></description>
       <pubDate>Sat, 30 May 2026 10:00:41 +0000</pubDate>
