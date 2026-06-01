@@ -6,6 +6,19 @@
     <description>Auto-update feed for the Trulo Designer macOS build (Sparkle).</description>
     <language>en</language>
     <item>
+      <title>Version 1.2.1 (4)</title>
+      <description><![CDATA[The gallery and "Take photo" buttons now open a file dialog on desktop, so you can upload images from your computer. Also includes profile-editor fixes (About You intro no longer lost, location saves reliably) and faster, more reliable profile-image loading. Staging backend.]]></description>
+      <pubDate>Mon, 01 Jun 2026 15:19:40 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/myurr/trulo-website/releases/download/designer-macos-v1.2.1-4/TruloDesigner-sparkle.zip"
+        sparkle:version="4"
+        sparkle:shortVersionString="1.2.1"
+        length="61868923"
+        type="application/octet-stream"
+        sparkle:edSignature="PTkZI+dNTaT0vkeldaGDHmsjqOg7o7fkT4roUwrOAzXimepv5jkt/nyCgE0te3hfSvgVaknfWBp6ddyHb8Z1BA==" />
+    </item>
+    <item>
       <title>Version 1.2.0 (3)</title>
       <description><![CDATA[Adds the real Trulo app icon to the macOS build, and a manual "Check for updates" control — both an in-app button in the designer banner and a native "Check for Updates…" item in the app menu. Staging backend.]]></description>
       <pubDate>Sat, 30 May 2026 10:50:07 +0000</pubDate>
