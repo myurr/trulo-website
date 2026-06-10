@@ -6,6 +6,19 @@
     <description>Auto-update feed for the Trulo Designer macOS build (Sparkle).</description>
     <language>en</language>
     <item>
+      <title>Version 1.2.3 (9)</title>
+      <description><![CDATA[Fixes the Settings menu opening to a blank grey screen instead of the settings tray. Staging backend.]]></description>
+      <pubDate>Wed, 10 Jun 2026 08:48:03 +0000</pubDate>
+      <sparkle:minimumSystemVersion>10.15</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/myurr/trulo-website/releases/download/designer-macos-v1.2.3-9/TruloDesigner-sparkle.zip"
+        sparkle:version="9"
+        sparkle:shortVersionString="1.2.3"
+        length="62017546"
+        type="application/octet-stream"
+        sparkle:edSignature="jbjOfL+2uHBIfVEtLD8athy2RlkbvnsgW0vIkUwwpX0vHYGNwAU87SHuOnyDFZwdgSwkgELMURraJHBw9u49Aw==" />
+    </item>
+    <item>
       <title>Version 1.2.2 (8)</title>
       <description><![CDATA[Reconnects to the updated staging backend (new canister IDs) — fixes the "unable to connect" failure on launch. Also adds a connection-status banner, improved date-venue ranking with click-through to the venue map, sturdier sign-out and caching, and image uploads now downscaled at capture. Staging backend.]]></description>
       <pubDate>Wed, 10 Jun 2026 07:13:19 +0000</pubDate>
